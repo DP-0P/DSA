@@ -1,4 +1,3 @@
-package Arrays;
 import java.util.Arrays;
 
 public class array2_MaxAndMin {
