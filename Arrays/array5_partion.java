@@ -1,5 +1,3 @@
-package Arrays;
-
 public class array5_partion {
     public static int[] partion(int[] array) {
         int j = 0;
