@@ -1,4 +1,3 @@
-package Arrays;
 public class array1_ReverseOfArray{
     static <E> void reverseArray(E Array[]) {
         int start, end;
