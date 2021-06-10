@@ -13,18 +13,6 @@ void search(int array[], int size, int search)
 	else
 		cout << "Searched element is present at index " << index;
 }
-
-int main()
-{
-	int arr[] = {2, 3, 4, 10, 40};
-	int x = 1;
-	int n = *(&arr + 1) - arr;
-
-	search(arr, n, x);
-
-	return 0;
-}
-
 // Time Complexity -
 // Best Case - O(1)
 // Worst Case - O(n)
