@@ -11,12 +11,6 @@ LinearSearch = (search,array) => {
     else
         console.log("Searched element is available in array at index "+index);
 };
-
-let array = [1,2,5,4,3];
-let search = 5;
-
-LinearSearch(search,array);
-
 // Time Complexity -
 // Best Case - O(1)
 // Worst Case - O(n)
