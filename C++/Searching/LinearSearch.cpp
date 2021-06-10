@@ -1,6 +1,3 @@
-#include <iostream>
-using namespace std;
-
 void search(int array[], int size, int search)
 {
 	int index = -1;
