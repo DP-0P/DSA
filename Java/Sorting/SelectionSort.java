@@ -1,9 +1,5 @@
 import java.util.Arrays;
 public class SelectionSort {
-    public static void main(String[] args) {
-        int array[] = {3, 6, 2, 1, 4 };
-        SelectionSort(array);
-    }
     public static void SelectionSort(int array[]){   
         for(int i=0;i<array.length-1;i++){
             int minIndex = i;
