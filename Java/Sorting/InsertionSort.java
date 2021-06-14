@@ -13,6 +13,6 @@ public class InsertionSort {
 }
 
 // Best Case - O(n) when array is already sorted
-// Worst Case - O(n^2) when array is sorted in descending order
-// Average Case - O(n^2)
+// Worst Case - O(n²) when array is sorted in descending order
+// Average Case - O(n²)
 // Space complexity - O(1)
