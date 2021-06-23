@@ -27,12 +27,12 @@ public class MyLinkedList<D> {
     void print() {
         Node<D> temp = head;
         while (temp != null) {
-            System.out.println(temp.data);
+            System.out.print(temp.data+" ");
             temp = temp.next;
         }
     }
 
-    void delete(D data) {
+    void deleteFirst(D data) {
         Node<D> previous = null;
         Node<D> current = head;
         while (current != null) {
@@ -51,26 +51,53 @@ public class MyLinkedList<D> {
         }
     }
 
-    void Search(D data){
-
-        Node<D> temp = head;
-        int search=-1;
-        while(temp != null){
-            int i=0;
-            if(temp.data == data){
-                search = i;
-                return;
+    // corner case testing
+    void deleteAll(D data) {
+        Node<D> previous = null;
+        Node<D> current = head;
+        while (current != null) {
+            while (current.data == data) {
+                if (current.next == null) {
+                    previous.next = null;
+                    return;
+                } else if (current.next != null) {
+                    current.data = current.next.data;
+                    current.next = current.next.next;
+                }
             }
+            previous = current;
+            current = current.next;
+        }
+    }
+
+    void Search(D data) {
+        Node<D> temp = head;
+        int search = 0;
+        while (temp != null) {
+            if (temp.data == data) {
+                System.out.println(search);
+                return;
+            } else
+                search++;
             temp = temp.next;
         }
-        System.out.println(search);
     }
-    // search
-    // deleteAll
-    // deletefirst
+
+    void Reverse() {
+        Node<D> previous = null;
+        Node<D> current = head;
+        Node<D> next;
+        while (current != null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        head = previous;
+    }
+
     // deletelast
     // insertion
-    // reverse
     // append
     // addFirst
     // addLast
