@@ -1,4 +1,4 @@
-public class matrix1 {
+public class SpiralPrint {
 
     public static void spiralPrint(int matrix[][]) {
 
