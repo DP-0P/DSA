@@ -3,6 +3,7 @@ public class MyLinkedList<D> {
     class Node<D> {
         D data;
         Node<D> next;
+
         Node(D data) {
             this.data = data;
             next = null;
@@ -34,12 +35,12 @@ public class MyLinkedList<D> {
         head = add;
     }
 
-    void addAt(int index,D data) {
+    void addAt(int index, D data) {
         Node<D> add = new Node<D>(data);
         Node<D> temp = head;
         index--;
-        if(temp!=null)
-            for(int i=0;i<index && temp.next!=null;i++)
+        if (temp != null)
+            for (int i = 0; i < index && temp.next != null; i++)
                 temp = temp.next;
         add.next = temp.next;
         temp.next = add;
@@ -73,7 +74,6 @@ public class MyLinkedList<D> {
         }
     }
 
-    // corner case testing
     void deleteAll(D data) {
         Node<D> previous = null;
         Node<D> current = head;
@@ -98,6 +98,19 @@ public class MyLinkedList<D> {
         while (temp != null) {
             if (temp.data == data) {
                 System.out.println(search);
+                return;
+            } else
+                search++;
+            temp = temp.next;
+        }
+    }
+
+    void get(int index) {
+        Node<D> temp = head;
+        int search = 0;
+        while (temp != null) {
+            if (search == index) {
+                System.out.println(temp.data);
                 return;
             } else
                 search++;
@@ -149,27 +162,26 @@ public class MyLinkedList<D> {
         System.out.println(size);
     }
 
-    void deleteLast(){
-        if(head==null)
+    void deleteLast() {
+        if (head == null)
             return;
-        if(head.next==null)
+        if (head.next == null)
             return;
         Node<D> second = head;
-        while(second.next.next != null)
+        while (second.next.next != null)
             second = second.next;
         second.next = null;
     }
 
-    // lastIndexOf
-    void lastIndexOf(D data){
-        Node<D> current= head;
+    void lastIndexOf(D data) {
+        Node<D> current = head;
         int lastIndex = 0;
-        int count =0;
-        while(current != null){
-            if(current.data == data)
-                lastIndex = count;  
-        count++;
-        current = current.next;
+        int count = 0;
+        while (current != null) {
+            if (current.data == data)
+                lastIndex = count;
+            count++;
+            current = current.next;
         }
         System.out.println(lastIndex);
     }
