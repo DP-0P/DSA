@@ -48,6 +48,7 @@ public class ReverseLinkedList {
         }
         System.out.println();
     }
+
     public static void main(String[] args) {
         ReverseLinkedList ob = new ReverseLinkedList();
 

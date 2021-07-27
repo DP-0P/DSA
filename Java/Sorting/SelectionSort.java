@@ -19,4 +19,4 @@ public class SelectionSort {
 // Best Case - O(n²) when array is already sorted
 // Worst Case - O(n²) when array is sorted in descending order
 // Average Case - O(n²)
-// Space Complexity - O(1)
+// Space complexity - O(1)

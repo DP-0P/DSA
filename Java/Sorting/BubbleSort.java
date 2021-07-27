@@ -19,7 +19,7 @@ public class BubbleSort {
     }
 }
 
-// Best Case - n when array is already sorted
-// Worst Case - O(n²)
-// Average Case - O(n²)
+// Best Case - O(n) when array is already sorted
+// Worst Case - O(n^2)
+// Average Case - O(n^2)
 // Space complexity - O(1)
