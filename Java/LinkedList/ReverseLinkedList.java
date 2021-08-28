@@ -52,14 +52,14 @@ public class ReverseLinkedList {
     public static void main(String[] args) {
         ReverseLinkedList ob = new ReverseLinkedList();
 
-        ob.head = new Node(45);
-        ob.head.next = new Node(5);
-        ob.head.next.next = new Node(65);
-        ob.head.next.next.next = new Node(75);
-        ob.head.next.next.next.next = new Node(95);
+        ob.head = new Node(1);
+        ob.head.next = new Node(2);
+        ob.head.next.next = new Node(3);
+        ob.head.next.next.next = new Node(4);
+        ob.head.next.next.next.next = new Node(5);
 
         ob.print();
-        head = ob.reverseRecursive(head);
+        ob.reverseIterative();
         ob.print();
     }
 }

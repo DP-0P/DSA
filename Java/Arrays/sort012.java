@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class sort012 {
     public static void main(String[] args) {
-        int a[] = {0,2,1,2,1,2,0,1,0};
+        int a[] = {0,2,1,2,0,0,1,1,2};
 
         System.out.println(Arrays.toString(sorting012(a)));
 
