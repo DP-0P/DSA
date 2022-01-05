@@ -113,14 +113,14 @@ bool bstCheck(node *root,node *left,node *right){
 
 int main()
 {
-    node *root = new node(50);
+    node *root = new node(71);
     // node *root = NULL;
-    root = insert(root, 30);
-    root = insert(root, 20);
-    root = insert(root, 40);
-    root = insert(root, 70);
-    root = insert(root, 60);
-    root = insert(root, 80);
+    root = insert(root, 65);
+    root = insert(root, 84);
+    root = insert(root, 69);
+    root = insert(root, 67);
+    root = insert(root, 83);
+    // root = insert(root, 80);
 
     // node *root = new node(3);
     // root->left = new node(2);
@@ -128,7 +128,7 @@ int main()
     // root->left->left = new node(1);
     // root->left->right = new node(4);
 
-    // inorder(root);
+    inorder(root);
 
     // cout << search(root, 80);
 
@@ -136,7 +136,7 @@ int main()
 
     // cout<<min(root);
 
-    cout<<bstCheck(root,NULL,NULL);
+    // cout<<bstCheck(root,NULL,NULL);
 }
 
 

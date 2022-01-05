@@ -10,4 +10,8 @@ public class maximumMinimum {
         System.out.println("Largest Element " + max);
         System.out.println("Smallest Element " + min);
     }
+    public static void main(String[] args) {
+        int arr[] = {1,2845,3455,324,-1};
+        MaxMin(arr);
+    }
 }
