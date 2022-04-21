@@ -47,32 +47,92 @@ void postorder(node *root) // Left Right Root
     cout << root->data << " ";
 }
 
-void inorderIterative(node *root)
-{
-    stack<node *> tree;
+void inorderIterative(node *root){
+    if(root==NULL)
+        cout<<"NULL"<<endl;
+
+    stack<node *> st;
     node *current = root;
 
-    while (current != NULL || tree.size() > 0)
-    {
-        while (current != NULL)
-        {
-            tree.push(current);
+    while (true){
+        if(current){
+            st.push(current);
             current = current->left;
         }
-        current = tree.top();
-        tree.pop();
-        cout << current->data << " ";
-        current = current->right;
+        else{
+            if(st.empty())
+                break;
+            current = st.top();
+            st.pop();
+            cout << current->data << " ";
+            current = current->right;
+        }
     }
     cout << endl;
 }
 
-void preorderIterative(node *root)
-{
+void preorderIterative(node *root){
+    if(root==NULL)
+        cout<<"NULL"<<endl;
+
+    stack<node *> st;
+    st.push(root);
+    while(!st.empty()){
+        root = st.top();
+        st.pop();
+        cout<<root->data<<" ";
+        if(root->right)
+            st.push(root->right);
+        
+        if(root->left)
+            st.push(root->left);
+    }
 }
 
-void postorderIterative(node *root)
-{
+void postorderIterativeTwoStack(node *root){
+    if(root==NULL)
+        cout<<"NULL"<<endl;
+    
+    stack<node *> st1,st2;
+    st1.push(root);
+    while(!st1.empty()){
+        root = st1.top();
+        st1.pop();
+        st2.push(root);
+        if(root->left)
+            st1.push(root->left);
+        if(root->right)
+            st1.push(root->right);
+    }
+    while(!st2.empty()){
+        cout<<st2.top()->data<<" ";
+        st2.pop();
+    }
+}
+
+void postorderIterativeOneStack(node *root){
+    if(root==NULL)
+        cout<<"NULL"<<endl;
+    
+    node *pre = NULL;
+    stack<node *> st;
+    while(root or !st.empty()){
+        if(root){
+            st.push(root);
+            root = root->left;
+        }
+        else{
+            root = st.top();
+            if(root->right==NULL or root->right==pre){
+                cout<<root->data<<" ";
+                st.pop();
+                pre = root;
+                root = NULL;
+            }
+            else
+                root = root->right;
+        }
+    }
 }
 
 void levelOrderTraversal(node *root)
@@ -107,9 +167,7 @@ int heightOfTree(node *root)
     int lHeight = heightOfTree(root->left);
     int rHeight = heightOfTree(root->right);
 
-    if (lHeight > rHeight)
-        return lHeight + 1;
-    return rHeight + 1;
+    return 1 + max(lHeight,rHeight);
 }
 
 int diameter(node *root)
@@ -232,7 +290,8 @@ int main()
     root->left->left = new node(4);
     root->left->right = new node(5);
     root->right->left = new node(6);
-    // root->right->right = new node(7);
+    root->right->right = new node(7);
+    cout<<heightOfTree(root);
     // cout << "Tree traversal using recursion - " << endl;
     // inorder(root);
     // cout << endl;
@@ -243,7 +302,9 @@ int main()
     // cout << "Tree traversal using iteration - " << endl;
     // inorderIterative(root);
     // preorderIterative(root);
-    // postorderIterative(root);
+    // postorderIterativeOneStack(root);
+    // cout<<endl;
+    // postorderIterativeTwoStack(root);
     // cout << heightOfTree(root) << endl;
     // cout<<diameter(root)<<endl;
     // levelOrderTraversal(root);
@@ -257,7 +318,7 @@ int main()
     // cout<<isBalanced(root,&h);
     // node *lcaa = lca(root,2,3);
     // cout<<lcaa->data;
-    int level = 0;
-    int leaf = 0;
-    cout<<sameLevel(root,level,&leaf);
+    // int level = 0;
+    // int leaf = 0;
+    // cout<<sameLevel(root,level,&leaf);
 }

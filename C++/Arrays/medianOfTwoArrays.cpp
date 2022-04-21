@@ -3,38 +3,39 @@
 #include<algorithm>
 using namespace std;
 
-double MedianOfArrays(vector<int>& array1, vector<int>& array2)
-    {
-        // Your code goes here
-        vector<int> array(array1.size()+array2.size());
-        // cout<<"workingg";
-        
-        int i;
-        for(i=0;i<array1.size();i++)
-            array[i] = array1[i];
-        // cout<<i<<endl;
-        for(;i<array1.size()+array2.size();i++)
-            array[i] = array2[i-array1.size()];
-
-            // cout<<"workingg";
-        sort(array.begin(),array.end());
-        for(auto i : array)
-            cout<<i<<" ";
-        
-        if(array.size() %2 == 0){
-            int middle = array.size()/2;
-            double res = (array[middle] + array[middle + 1])/2;
-            return res;
+double MedianOfArrays(vector<int>& array1, vector<int>& array2){
+    vector<int> arr;
+    int i=0,j=0;
+    while(i<array1.size() and j<array2.size()){
+        if(array1[i]<=array2[j]){
+            arr.push_back(array1[i]);
+            i++;
         }
-
-        
-        
-        int middle = array.size()/2;
-        // cout<<middle<<"middle element";
-        // double res = array[middle+1];
-        // cout<<res;
-        return double(array[middle]);
+        else{
+            arr.push_back(array2[j]);
+            j++;
+        }
     }
+        
+    while(i<array1.size()){
+        arr.push_back(array1[i]);
+        i++;
+    }
+        
+    while(j<array2.size()){
+        arr.push_back(array2[j]);
+        j++;
+    }
+        
+    double median = 0;
+    if((array1.size()+array2.size())%2!=0)
+        median = arr[(array1.size()+array2.size())/(double)2];
+        
+    else
+        median = (arr[(array1.size()+array2.size())/(double)2] + arr[((array1.size()+array2.size())/(double)2)-1])/(double)2;
+        
+    return median;
+}
 
 int main(){
     vector<int> v = {1,5,9};
