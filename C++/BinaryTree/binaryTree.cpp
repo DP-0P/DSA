@@ -1,6 +1,8 @@
 #include <iostream>
 #include <stack>
 #include <queue>
+#include <algorithm>
+#include <climits>
 using namespace std;
 
 class node
@@ -282,6 +284,29 @@ bool sameLevel(node *root,int level,int *leaf){
     return sameLevel(root->left, level + 1, leaf) and sameLevel(root->right, level + 1, leaf);
 }
 
+int maxPathDown(node *nodee,int &maxim){
+    if(nodee == NULL)
+        return 0;
+    
+    int left = max(0,maxPathDown(nodee->left,maxim));
+    int right = max(0,maxPathDown(nodee->right,maxim));
+    maxim = max(maxim,left+right+nodee->data);
+    return max(left,right)+nodee->data;
+}
+
+int maxPathSum(node *root){
+    int maxim = INT_MIN;
+    maxPathDown(root,maxim);
+    return maxim;
+}
+
+bool isIdentical(node *root1,node *root2){
+    if(root1 == NULL or root2 == NULL)
+        return root1==root2;
+    
+    return root1->data == root2->data and isIdentical(root1->left,root2->left) and isIdentical(root1->right,root2->right);
+}
+
 int main()
 {
     node *root = new node(1);
@@ -291,7 +316,14 @@ int main()
     root->left->right = new node(5);
     root->right->left = new node(6);
     root->right->right = new node(7);
-    cout<<heightOfTree(root);
+    //cout<<maxPathSum(root);
+    // node *root1 = new node(1);
+    // root1->left = new node(2);
+    // root1->right = new node(3);
+    // root1->left->left = new node(4);
+    // root1->left->right = new node(5);
+    // root1->right->left = new node(6);
+    // cout << isIdentical(root,root1);
     // cout << "Tree traversal using recursion - " << endl;
     // inorder(root);
     // cout << endl;
